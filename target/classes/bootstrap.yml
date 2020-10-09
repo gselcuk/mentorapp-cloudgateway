@@ -12,8 +12,10 @@ spring:
       discovery:
         locator:
           enabled: true
+          lower-case-service-id: true
       routes:
-      - id: account-service
-        uri: lb://mentorapp=user
+      - id: mentorapp-user
+        uri: lb://mentorapp-user
         predicates:
         - Path=/user/**
+        
