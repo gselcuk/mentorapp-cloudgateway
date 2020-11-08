@@ -22,3 +22,7 @@ spring:
         uri: lb://mentorapp-expertise
         predicates:
         - Path=/expertise/**
+      - id: mentorapp-admin
+        uri: lb://mentorapp-admin
+        predicates:
+        - Path=/admin/**
