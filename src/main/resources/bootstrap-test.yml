@@ -1,0 +1,28 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: https://mentorapp-serviceregistry.herokuapp.com/eureka/
+server:
+  port: 8080
+spring:
+  application:
+    name: mentorapp-cloudgateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+      - id: mentorapp-user
+        uri: lb://mentorapp-user
+        predicates:
+        - Path=/user/**
+      - id: mentorapp-expertise
+        uri: lb://mentorapp-expertise
+        predicates:
+        - Path=/expertise/**
+      - id: mentorapp-admin
+        uri: lb://mentorapp-admin
+        predicates:
+        - Path=/admin/**
